@@ -5,10 +5,8 @@ data class Item(
     val name: String,
     val detail: String,
     val seller: String,
-    val price: String,
+    val price: Int,
     val address: String,
-) {
-    val like = 0
-    val chat = 0
-
-}
+    val like: Int,
+    val chat: Int
+)
