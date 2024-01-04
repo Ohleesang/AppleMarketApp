@@ -1,5 +1,6 @@
 package com.example.applemarketapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.applemarketapp.data.Item
@@ -18,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setDummyData()
-        println()
+        binding.ivBell.setOnClickListener {
+            startActivity(Intent(this,DetailActivity::class.java))
+        }
 
     }
 
