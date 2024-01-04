@@ -10,8 +10,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layout_upperbar"
         android:layout_width="0dp"
-        android:layout_height="61dp"
-        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toTopOf="@+id/item_list_rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -53,7 +53,7 @@
 
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
+        android:id="@+id/item_list_rv"
         android:layout_width="409dp"
         android:layout_height="665dp"
         app:layout_constraintBottom_toBottomOf="parent"
