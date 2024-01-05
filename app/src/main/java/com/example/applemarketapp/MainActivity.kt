@@ -3,6 +3,7 @@ package com.example.applemarketapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.applemarketapp.data.ItemList
 import com.example.applemarketapp.databinding.ActivityMainBinding
 
@@ -24,5 +25,14 @@ class MainActivity : AppCompatActivity() {
 
         //인스턴스 값 넣기
         ItemList.setDummyData(this,"dummy_data.xlsx")
+
+        //RecyclerView 생성하기
+
+        //1.layoutmanger
+        binding.itemListRv.layoutManager = LinearLayoutManager(this)
+
+        //2.adapter
+
+
     }
 }
