@@ -21,12 +21,26 @@
             android:layout_height="wrap_content"
             android:orientation="vertical" >
 
-            <ImageView
-                android:id="@+id/item_iv"
+            <FrameLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="centerCrop"
-                app:srcCompat="@drawable/sample8" />
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/back_btn_iv"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="20dp"
+                    android:rotationY="-180"
+                    app:srcCompat="@drawable/img_back_btn" />
+
+                <ImageView
+                    android:id="@+id/item_iv"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:visibility="visible"
+                    app:srcCompat="@drawable/sample8" />
+            </FrameLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_info_layout"
@@ -35,65 +49,65 @@
                 android:padding="10dp">
 
                 <TextView
-                    android:id="@+id/detail_manner_degree_tv"
+                    android:id="@+id/manner_degree_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="매너온도"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_face_imo_iv" />
+                    app:layout_constraintTop_toBottomOf="@+id/face_imo_iv" />
 
                 <ImageView
-                    android:id="@+id/detail_profile_iv"
+                    android:id="@+id/profile_iv"
                     android:layout_width="52dp"
                     android:layout_height="46dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/user" />
+                    app:srcCompat="@drawable/img_user_icon" />
 
                 <TextView
-                    android:id="@+id/detail_user_name_tv"
+                    android:id="@+id/user_name_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:text="name"
                     android:textSize="17dp"
-                    app:layout_constraintStart_toEndOf="@+id/detail_profile_iv"
-                    app:layout_constraintTop_toTopOf="@+id/detail_profile_iv" />
+                    app:layout_constraintStart_toEndOf="@+id/profile_iv"
+                    app:layout_constraintTop_toTopOf="@+id/profile_iv" />
 
                 <TextView
-                    android:id="@+id/detail_manner_degree_value_tv"
+                    android:id="@+id/manner_degree_value_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:text="39.3 °C"
                     android:textColor="#498C58"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/detail_face_imo_iv"
-                    app:layout_constraintEnd_toStartOf="@+id/detail_face_imo_iv"
-                    app:layout_constraintTop_toTopOf="@+id/detail_face_imo_iv" />
+                    app:layout_constraintBottom_toBottomOf="@+id/face_imo_iv"
+                    app:layout_constraintEnd_toStartOf="@+id/face_imo_iv"
+                    app:layout_constraintTop_toTopOf="@+id/face_imo_iv" />
 
                 <TextView
-                    android:id="@+id/detail_user_address_tv"
+                    android:id="@+id/user_address_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="address"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/detail_user_name_tv"
-                    app:layout_constraintTop_toBottomOf="@+id/detail_user_name_tv" />
+                    app:layout_constraintStart_toStartOf="@+id/user_name_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/user_name_tv" />
 
                 <ImageView
-                    android:id="@+id/detail_face_imo_iv"
+                    android:id="@+id/face_imo_iv"
                     android:layout_width="38dp"
                     android:layout_height="37dp"
                     android:scaleType="fitCenter"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/face_imo" />
+                    app:srcCompat="@drawable/img_status" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
@@ -123,26 +137,26 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <ImageView
-            android:id="@+id/detail_heart_iv"
+            android:id="@+id/heart_iv"
             android:layout_width="20dp"
             android:layout_height="20dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/heart" />
+            app:srcCompat="@drawable/img_all_no_like" />
 
         <TextView
-            android:id="@+id/detail_price_tv"
+            android:id="@+id/price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="32dp"
             android:text="10000원"
-            app:layout_constraintBottom_toBottomOf="@+id/detail_heart_iv"
-            app:layout_constraintStart_toStartOf="@id/detail_heart_iv"
-            app:layout_constraintTop_toTopOf="@+id/detail_heart_iv" />
+            app:layout_constraintBottom_toBottomOf="@+id/heart_iv"
+            app:layout_constraintStart_toStartOf="@id/heart_iv"
+            app:layout_constraintTop_toTopOf="@+id/heart_iv" />
 
         <android.widget.Button
-            android:id="@+id/detail_chat_btn"
+            android:id="@+id/chat_btn"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:layout_marginTop="4dp"

@@ -36,7 +36,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_toolbar"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/tv_toolbar"
-            app:srcCompat="@drawable/bell"
+            app:srcCompat="@drawable/img_notice"
             android:importantForAccessibility="no" />
 
         <ImageView
@@ -47,7 +47,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/tv_toolbar"
             app:layout_constraintStart_toEndOf="@+id/tv_toolbar"
             app:layout_constraintTop_toTopOf="@+id/tv_toolbar"
-            app:srcCompat="@drawable/angle_small_down"
+            app:srcCompat="@drawable/img_down_arrow"
             android:importantForAccessibility="no" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
