@@ -1,5 +1,7 @@
 package com.example.applemarketapp.data
 
+import com.example.applemarketapp.R
+
 data class Item(
     val imgResource: Int,
     val name: String,
