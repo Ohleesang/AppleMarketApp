@@ -69,7 +69,7 @@
                     app:srcCompat="@drawable/img_user_icon" />
 
                 <TextView
-                    android:id="@+id/user_name_tv"
+                    android:id="@+id/seller_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -91,14 +91,14 @@
                     app:layout_constraintTop_toTopOf="@+id/face_imo_iv" />
 
                 <TextView
-                    android:id="@+id/user_address_tv"
+                    android:id="@+id/address_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
                     android:text="address"
                     android:textSize="13sp"
-                    app:layout_constraintStart_toStartOf="@+id/user_name_tv"
-                    app:layout_constraintTop_toBottomOf="@+id/user_name_tv" />
+                    app:layout_constraintStart_toStartOf="@+id/seller_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/seller_tv" />
 
                 <ImageView
                     android:id="@+id/face_imo_iv"

@@ -30,14 +30,14 @@ class DetailActivity : AppCompatActivity() {
     private fun setDataView() {
         var item =
             intent.getParcelableExtra<Item>("clickedItem")
-        item?.let {
-            binding.itemIv.setImageResource(it.imgResource)
+        item?.run {
+            binding.itemIv.setImageResource(imgResource)
 
-            binding.itemNameTv.text = it.name
-            binding.userAddressTv.text = it.address
-            binding.detailTv.text = it.detail
-            binding.userNameTv.text = it.seller
-            binding.priceTv.text = it.price.toString()
+            binding.itemNameTv.text = name
+            binding.addressTv.text = address
+            binding.detailTv.text = detail
+            binding.sellerTv.text = seller
+            binding.priceTv.text = price
         }
     }
     //뒤로가기 버튼 이벤트 설정
