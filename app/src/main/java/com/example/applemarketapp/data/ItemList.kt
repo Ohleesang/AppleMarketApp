@@ -1,7 +1,6 @@
 package com.example.applemarketapp.data
 
 import android.content.Context
-import org.apache.poi.ss.usermodel.Cell
 import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
@@ -34,10 +33,38 @@ object ItemList {
                 if (rowData.isNotEmpty()) dataArray.add(rowData)
 
             }
-
-
             //C .파일 닫기
             inputStream.close()
+
+            //D . 인스턴스 생성 이후 값넣기
+
+            // 설명부분 제거
+            dataArray.removeFirst()
+
+            //인스턴스에 값넣기
+            dataArray.forEach { row ->
+
+                //1. 이미지 리소스 파일을 찾아서 해당되는 값 찾기
+                val resId = context.resources.getIdentifier(row[1], "drawable", context.packageName)
+
+                //2. 세부사항 String 값 \\n -> \n
+                val detail = row[3].replace("\\\\n", "\\n")
+
+                //3. String to Int
+                val price = row[5].toFloat().toInt()
+                val like = row[7].toFloat().toInt()
+                val chat = row[8].toFloat().toInt()
+
+                //4. etc
+                val name = row[2]
+                val seller = row[4]
+                val address = row[6]
+
+                // 인스턴스 생성!
+                val item = Item(resId, name, detail, seller, price, address, like, chat)
+
+                value.add(item)
+            }
         } catch (e: Exception) {
         }
     }
