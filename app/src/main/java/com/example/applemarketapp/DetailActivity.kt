@@ -16,6 +16,8 @@ class DetailActivity : AppCompatActivity() {
         setDataView()
 
 
+        backBtnOnClick()
+
     }
 
     //Image 위치 변경
@@ -37,5 +39,12 @@ class DetailActivity : AppCompatActivity() {
             binding.userNameTv.text = it.seller
             binding.priceTv.text = it.price.toString()
         }
+    }
+    //뒤로가기 버튼 이벤트 설정
+    private fun backBtnOnClick(){
+        binding.backBtnIv.setOnClickListener {
+            finish()
+        }
+
     }
 }
