@@ -28,10 +28,12 @@ class MainActivity : AppCompatActivity() {
 
         //RecyclerView 생성하기
 
-        //1.layoutmanger
+        //1.layoutmanger 연결하기
         binding.itemListRv.layoutManager = LinearLayoutManager(this)
 
-        //2.adapter
+        //2.adapter 연결하기
+        var adapter = ItemAdapter(ItemList.value)
+        binding.itemListRv.adapter = adapter
 
 
     }

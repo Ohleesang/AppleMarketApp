@@ -10,5 +10,12 @@ class DetailActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        setImageElevation()
+
+    }
+    private fun setImageElevation(){
+        binding.backBtnIv.elevation=1F
+        binding.itemIv.elevation=0F
     }
 }

@@ -8,7 +8,7 @@ import java.io.InputStream
 
 
 object ItemList {
-    private val value = mutableListOf<Item>()
+    val value = mutableListOf<Item>()
     fun setDummyData(context: Context, fileName: String) {
         try {
             //A. assets 폴더에 저장된 Excel 파일 열기
