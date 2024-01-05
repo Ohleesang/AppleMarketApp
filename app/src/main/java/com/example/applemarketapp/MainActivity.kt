@@ -16,11 +16,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
+
+        //[임시] 액티비티 이동
         binding.ivBell.setOnClickListener {
             startActivity(Intent(this,DetailActivity::class.java))
         }
 
+        //인스턴스 값 넣기
         ItemList.setDummyData(this,"dummy_data.xlsx")
     }
-
 }
