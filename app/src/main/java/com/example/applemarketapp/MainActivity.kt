@@ -32,10 +32,11 @@ class MainActivity : AppCompatActivity(){
         //클릭시 이벤트처리
         adapter.itemClick = object :ItemAdapter.ItemClick{
             override fun onClick(view: View, position: Int) {
-                val intent = Intent(this@MainActivity,DetailActivity::class.java)
+                val intent = Intent(view.context,DetailActivity::class.java)
 
                 //해당 뷰의 데이터를 전달
                 val data = ItemList.value[position]
+                intent.putExtra("clickedItem",data)
                 startActivity(intent)
             }
 
