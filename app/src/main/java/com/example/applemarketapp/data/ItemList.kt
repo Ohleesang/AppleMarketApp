@@ -5,6 +5,8 @@ import org.apache.poi.ss.usermodel.CellType
 import org.apache.poi.ss.usermodel.Row
 import org.apache.poi.xssf.usermodel.XSSFWorkbook
 import java.io.InputStream
+import java.text.NumberFormat
+import java.util.Locale
 
 
 object ItemList {
@@ -49,16 +51,25 @@ object ItemList {
 
                 //2. 세부사항 String 값 \\n -> \n
 
-                val detail = row[3].replace("\\n","\n")
+                val detail = row[3].replace("\\n", "\n")
 
-
-                "금고\\n떼서 가져가야함\\n대우월드마크센텀\\n미국이주관계로 싸게 팝니다\n"
                 //3. String to Int
-                val price = row[5].toFloat().toInt()
                 val like = row[7].toFloat().toInt()
                 val chat = row[8].toFloat().toInt()
 
-                //4. etc
+
+                //4.price 10000.0 -> 1,0000원 으로 수정
+
+                var price = "원"
+                var intPrice = row[5].toFloat().toInt()
+
+                //숫자를 한국식으로 쉼표가 포함된 문자열로 형식화
+                val formatter = NumberFormat.getNumberInstance(Locale.KOREA)
+                val formattedNum = formatter.format(intPrice)
+                price = formattedNum + price
+
+                //5. etc
+
                 val name = row[2]
                 val seller = row[4]
                 val address = row[6]
