@@ -82,6 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:text="0"
+        app:layout_constraintBottom_toBottomOf="@+id/heart_iv"
         app:layout_constraintEnd_toStartOf="@+id/heart_iv"
-        tools:layout_editor_absoluteY="146dp" />
+        app:layout_constraintTop_toTopOf="@+id/heart_iv" />
 </androidx.constraintlayout.widget.ConstraintLayout>
