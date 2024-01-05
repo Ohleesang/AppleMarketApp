@@ -48,8 +48,11 @@ object ItemList {
                 val resId = context.resources.getIdentifier(row[1], "drawable", context.packageName)
 
                 //2. 세부사항 String 값 \\n -> \n
-                val detail = row[3].replace("\\\\n", "\\n")
 
+                val detail = row[3].replace("\\n","\n")
+
+
+                "금고\\n떼서 가져가야함\\n대우월드마크센텀\\n미국이주관계로 싸게 팝니다\n"
                 //3. String to Int
                 val price = row[5].toFloat().toInt()
                 val like = row[7].toFloat().toInt()
