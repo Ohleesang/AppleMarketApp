@@ -8,7 +8,7 @@
     android:padding="10dp">
 
     <ImageView
-        android:id="@+id/iconItem"
+        android:id="@+id/item_iv"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:scaleType="fitXY"
@@ -24,8 +24,8 @@
         android:layout_marginStart="24dp"
         android:text="name"
         android:textSize="18dp"
-        app:layout_constraintStart_toEndOf="@+id/iconItem"
-        app:layout_constraintTop_toTopOf="@+id/iconItem" />
+        app:layout_constraintStart_toEndOf="@+id/item_iv"
+        app:layout_constraintTop_toTopOf="@+id/item_iv" />
 
     <TextView
         android:id="@+id/address_tv"
