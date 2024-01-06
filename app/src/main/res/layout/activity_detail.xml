@@ -162,16 +162,29 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.55"
             app:srcCompat="@drawable/img_all_no_like" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:background="#9E9E9E"
+            app:layout_constraintStart_toEndOf="@+id/heart_iv"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="10000원"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="price"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/heart_iv"
-            app:layout_constraintStart_toStartOf="@id/heart_iv"
+            app:layout_constraintStart_toEndOf="@+id/view"
             app:layout_constraintTop_toTopOf="@+id/heart_iv" />
 
         <android.widget.Button
