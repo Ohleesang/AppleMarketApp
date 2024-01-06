@@ -9,6 +9,7 @@ import android.content.pm.PackageManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.Settings
 import android.view.MotionEvent
 import android.view.View
 import androidx.core.app.ActivityCompat
@@ -25,6 +26,8 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
+    //알림 채널
+    private val notification = Notification(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -39,8 +42,8 @@ class MainActivity : AppCompatActivity() {
         setItemOnclick(binding.itemListRv.adapter)
 
 
-
-
+        //알림 채널 생성
+        notification.createNotificationChannel()
 
         //벨 클릭시 이벤트 처리
         val bellView = binding.bellIv
@@ -53,6 +56,7 @@ class MainActivity : AppCompatActivity() {
                 MotionEvent.ACTION_UP -> {
                     bellView.setImageResource(R.drawable.img_notice)
                     //알람 이벤트 발생!
+                    notification.showNotification()
                 }
             }
             true
