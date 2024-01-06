@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
 
@@ -17,7 +18,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_toolbar"
+            android:id="@+id/upperbar_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
@@ -29,25 +30,25 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/iv_bell"
+            android:id="@+id/bell_iv"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="16dp"
             android:importantForAccessibility="no"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_toolbar"
+            app:layout_constraintBottom_toBottomOf="@+id/upperbar_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tv_toolbar"
+            app:layout_constraintTop_toTopOf="@+id/upperbar_tv"
             app:srcCompat="@drawable/img_notice" />
 
         <ImageView
-            android:id="@+id/iv_angle_down"
+            android:id="@+id/angle_down_iv"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_marginStart="4dp"
             android:importantForAccessibility="no"
-            app:layout_constraintBottom_toBottomOf="@+id/tv_toolbar"
-            app:layout_constraintStart_toEndOf="@+id/tv_toolbar"
-            app:layout_constraintTop_toTopOf="@+id/tv_toolbar"
+            app:layout_constraintBottom_toBottomOf="@+id/upperbar_tv"
+            app:layout_constraintStart_toEndOf="@+id/upperbar_tv"
+            app:layout_constraintTop_toTopOf="@+id/upperbar_tv"
             app:srcCompat="@drawable/img_down_arrow" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 

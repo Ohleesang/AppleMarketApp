@@ -4,13 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".DetailActivity">
+
+    <ImageView
+        android:id="@+id/back_btn_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:elevation="1dp"
+        android:rotationY="-180"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_back_btn" />
+
 
     <ScrollView
         android:id="@+id/detail_sv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/detail_bottom_layout"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_bottom_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,41 +35,30 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
+            <ImageView
+                android:id="@+id/item_iv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/back_btn_iv"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp"
-                    android:rotationY="-180"
-                    app:srcCompat="@drawable/img_back_btn" />
-
-                <ImageView
-                    android:id="@+id/item_iv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/sample8" />
-            </FrameLayout>
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="visible"
+                app:srcCompat="@drawable/sample8" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_info_layout"
                 android:layout_width="match_parent"
                 android:layout_height="82dp"
-                android:padding="10dp">
+                android:padding="15dp">
 
                 <TextView
                     android:id="@+id/manner_degree_tv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
                     android:text="매너온도"
+                    android:textColor="#A8A8A8"
                     android:textSize="13sp"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/face_imo_iv"
                     app:layout_constraintTop_toBottomOf="@+id/face_imo_iv" />
 
                 <ImageView
@@ -85,10 +88,11 @@
                     android:layout_marginEnd="4dp"
                     android:text="39.3 °C"
                     android:textColor="#498C58"
+                    android:textSize="17dp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/face_imo_iv"
+                    app:layout_constraintBottom_toTopOf="@+id/address_tv"
                     app:layout_constraintEnd_toStartOf="@+id/face_imo_iv"
-                    app:layout_constraintTop_toTopOf="@+id/face_imo_iv" />
+                    app:layout_constraintTop_toTopOf="@+id/seller_tv" />
 
                 <TextView
                     android:id="@+id/address_tv"
@@ -102,26 +106,42 @@
 
                 <ImageView
                     android:id="@+id/face_imo_iv"
-                    android:layout_width="38dp"
-                    android:layout_height="37dp"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/manner_degree_value_tv"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/seller_tv"
                     app:srcCompat="@drawable/img_status" />
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <TextView
-                android:id="@+id/item_name_tv"
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/user_text_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="name"
-                android:textSize="40dp" />
+                android:layout_height="match_parent"
+                android:padding="15dp">
 
-            <TextView
-                android:id="@+id/detail_tv"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="TextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextView" />
+                <TextView
+                    android:id="@+id/item_name_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:textSize="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="TextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_name_tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
         </LinearLayout>
     </ScrollView>
@@ -130,7 +150,8 @@
         android:id="@+id/detail_bottom_layout"
         android:layout_width="408dp"
         android:layout_height="55dp"
-        android:background="#FBF8F8"
+        android:background="#FFFFFF"
+        android:elevation="2dp"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -143,16 +164,29 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.55"
             app:srcCompat="@drawable/img_all_no_like" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:background="#9E9E9E"
+            app:layout_constraintStart_toEndOf="@+id/heart_iv"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/price_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:text="10000원"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="price"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/heart_iv"
-            app:layout_constraintStart_toStartOf="@id/heart_iv"
+            app:layout_constraintStart_toEndOf="@+id/view"
             app:layout_constraintTop_toTopOf="@+id/heart_iv" />
 
         <android.widget.Button
