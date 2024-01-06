@@ -1,9 +1,19 @@
 package com.example.applemarketapp
 
+import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applemarketapp.data.Item
@@ -28,6 +38,25 @@ class MainActivity : AppCompatActivity() {
         //아이템 리스트 클릭시 이벤트 처리
         setItemOnclick(binding.itemListRv.adapter)
 
+
+
+
+
+        //벨 클릭시 이벤트 처리
+        val bellView = binding.bellIv
+        bellView.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    bellView.setImageResource(R.drawable.img_notice_bell)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    bellView.setImageResource(R.drawable.img_notice)
+                    //알람 이벤트 발생!
+                }
+            }
+            true
+        }
 
     }
 
