@@ -53,6 +53,7 @@ object ItemList {
 
                 val detail = row[3].replace("\\n", "\n")
 
+
                 //3. String to Int
                 val like = row[7].toFloat().toInt()
                 val chat = row[8].toFloat().toInt()
@@ -61,7 +62,7 @@ object ItemList {
                 //4.price 10000.0 -> 1,0000원 으로 수정
 
                 var price = "원"
-                var intPrice = row[5].toFloat().toInt()
+                val intPrice = row[5].toFloat().toInt()
 
                 //숫자를 한국식으로 쉼표가 포함된 문자열로 형식화
                 val formatter = NumberFormat.getNumberInstance(Locale.KOREA)

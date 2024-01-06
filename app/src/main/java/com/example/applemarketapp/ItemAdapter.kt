@@ -1,13 +1,11 @@
 package com.example.applemarketapp
 
-import android.content.Intent
+
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applemarketapp.data.Item
-import com.example.applemarketapp.databinding.ActivityMainBinding
 import com.example.applemarketapp.databinding.ItemRecyclerViewBinding
 
 class ItemAdapter(private val mItems: MutableList<Item>) :
@@ -47,13 +45,13 @@ class ItemAdapter(private val mItems: MutableList<Item>) :
         holder.imageItem.setImageResource(item.imgResource)
         holder.nameItem.text = item.name
         holder.addressItem.text = item.address
-        holder.priceItem.text = item.price.toString()
+        holder.priceItem.text = item.price
         holder.chatItem.text = item.chat.toString()
         holder.likeItem.text = item.like.toString()
 
         //클릭시 detailActivity로 이동
         holder.layout.setOnClickListener {
-            itemClick?.onClick(it,position)
+            itemClick.onClick(it, position)
         }
     }
 }
