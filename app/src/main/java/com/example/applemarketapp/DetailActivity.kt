@@ -14,19 +14,12 @@ class DetailActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        setImageElevation()
         setDataView()
-
 
         backBtnOnClick()
 
     }
 
-    //Image 위치 변경
-    private fun setImageElevation() {
-        binding.backBtnIv.elevation = 1F
-        binding.itemIv.elevation = 0F
-    }
 
     //데이터를 받아서 화면을 재구성
     private fun setDataView() {

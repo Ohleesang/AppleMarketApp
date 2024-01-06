@@ -4,13 +4,27 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".DetailActivity">
+
+    <ImageView
+        android:id="@+id/back_btn_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:elevation="1dp"
+        android:rotationY="-180"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_back_btn" />
+
 
     <ScrollView
         android:id="@+id/detail_sv"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/detail_bottom_layout"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_bottom_layout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -21,26 +35,13 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <FrameLayout
+            <ImageView
+                android:id="@+id/item_iv"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <ImageView
-                    android:id="@+id/back_btn_iv"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_margin="20dp"
-                    android:rotationY="-180"
-                    app:srcCompat="@drawable/img_back_btn" />
-
-                <ImageView
-                    android:id="@+id/item_iv"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:visibility="visible"
-                    app:srcCompat="@drawable/sample8" />
-            </FrameLayout>
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="visible"
+                app:srcCompat="@drawable/sample8" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/user_info_layout"
@@ -149,6 +150,8 @@
         android:id="@+id/detail_bottom_layout"
         android:layout_width="408dp"
         android:layout_height="55dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
