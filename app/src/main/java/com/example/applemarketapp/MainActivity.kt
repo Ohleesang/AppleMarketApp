@@ -22,17 +22,26 @@ class MainActivity : AppCompatActivity() {
     private val notification = Notification(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(binding.root)
 
-
+        //더미 데이터 최초 생성
         setDummyData("dummy_data.xlsx")
+
+        //뷰를 생성
+        createView()
+
+    }
+
+
+    //뷰를 생성 하는 부분
+    private fun createView(){
+
+        setContentView(binding.root)
 
         //RecyclerView 생성 하기
         setRecyclerView(binding.itemListRv, ItemList.value)
 
         //아이템 리스트 클릭시 이벤트 처리
         setItemOnclick(binding.itemListRv.adapter)
-
 
         //알림 채널 생성
         notification.createNotificationChannel()
@@ -41,8 +50,6 @@ class MainActivity : AppCompatActivity() {
         setOnTouchBell()
 
     }
-
-
     //뒤로가기 버튼 눌렀을때,
     override fun onBackPressed() {
 
@@ -97,8 +104,13 @@ class MainActivity : AppCompatActivity() {
                     setMessage("상품을 정말로 삭제하시겠습니까?")
                     setIcon(R.drawable.img_chat)
                     setPositiveButton("확인") { dialog, _ ->
+
                         //확인시 해당 리스트값 제거
-                        setContentView(binding.root)
+                        ItemList.deleteData(position)
+
+                        //데이터가 변경되었으면 화면을 다시 구성
+                        createView()
+
                         dialog.dismiss()
                     }
                     setNegativeButton("취소") { dialog, _ ->
