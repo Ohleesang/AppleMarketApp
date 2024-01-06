@@ -48,15 +48,15 @@ class MainActivity : AppCompatActivity() {
 
         //다이얼로그 실행
         val builder = AlertDialog.Builder(this)
-        builder.run{
+        builder.run {
             setTitle("종료")
             setMessage("앱을 종료하시겠습니까?")
             setIcon(R.drawable.img_chat)
-            setPositiveButton("확인"){dialog,which->
+            setPositiveButton("확인") { dialog, _ ->
                 dialog.dismiss()
                 super.onBackPressed()
             }
-            setNegativeButton("취소") { dialog, which ->
+            setNegativeButton("취소") { dialog, _ ->
                 dialog.dismiss()
             }
             show()
