@@ -23,9 +23,9 @@
         android:layout_marginStart="8dp"
         android:text="종료"
         android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="@+id/alert_dialog_layout"
-        app:layout_constraintStart_toEndOf="@+id/alert_dialog_layout"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintBottom_toBottomOf="@+id/alert_dialog_iv"
+        app:layout_constraintStart_toEndOf="@+id/alert_dialog_iv"
+        app:layout_constraintTop_toTopOf="@+id/alert_dialog_iv" />
 
     <TextView
         android:id="@+id/exit_detail_tv"
@@ -34,7 +34,7 @@
         android:layout_marginTop="8dp"
         android:text="정말 종료하겠습니까?"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/alert_dialog_layout" />
+        app:layout_constraintTop_toBottomOf="@+id/alert_dialog_iv" />
 
     <android.widget.Button
         android:id="@+id/cancel_btn"
