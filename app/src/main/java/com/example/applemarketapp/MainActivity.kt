@@ -1,20 +1,11 @@
 package com.example.applemarketapp
 
-import android.Manifest
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
+
 import android.content.Intent
-import android.content.pm.PackageManager
-import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.provider.Settings
 import android.view.MotionEvent
 import android.view.View
-import androidx.core.app.ActivityCompat
-import androidx.core.app.NotificationCompat
-import androidx.core.app.NotificationManagerCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applemarketapp.data.Item
