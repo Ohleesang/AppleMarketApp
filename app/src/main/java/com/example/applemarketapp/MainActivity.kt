@@ -1,8 +1,10 @@
 package com.example.applemarketapp
 
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MotionEvent
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -15,6 +17,8 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
+    //알림
+    private val notification = Notification(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -28,6 +32,12 @@ class MainActivity : AppCompatActivity() {
         //아이템 리스트 클릭시 이벤트 처리
         setItemOnclick(binding.itemListRv.adapter)
 
+
+        //알림 채널 생성
+        notification.createNotificationChannel()
+
+        //벨 클릭시 이벤트 처리
+        setOnTouchBell()
 
     }
 
@@ -53,6 +63,23 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("clickedItem", data)
                 startActivity(intent)
             }
+        }
+    }
+    private fun setOnTouchBell(){
+        val bellView = binding.bellIv
+        bellView.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    bellView.setImageResource(R.drawable.img_notice_bell)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    bellView.setImageResource(R.drawable.img_notice)
+                    //알람 이벤트 발생!
+                    notification.showNotification()
+                }
+            }
+            true
         }
     }
 }
