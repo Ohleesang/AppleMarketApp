@@ -49,7 +49,7 @@ class Notification(private val context: Context) {
                 "android.permission.POST_NOTIFICATIONS"
             ) != PackageManager.PERMISSION_GRANTED
         ) {
-            // 만약,권환이 없을경우 암시적 인텐트 발생
+            // 만약,권한이 없을경우 암시적 인텐트 발생
             val intent = Intent(Settings.ACTION_APP_NOTIFICATION_SETTINGS).apply {
                 putExtra(Settings.EXTRA_APP_PACKAGE, context.packageName)
             }

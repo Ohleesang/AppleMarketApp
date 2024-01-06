@@ -86,6 +86,28 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("clickedItem", data)
                 startActivity(intent)
             }
+
+            override fun onLongClick(view: View, position: Int) {
+                //해당 여부를 묻는 다이얼로그생성
+
+                //다이얼로그 실행
+                val builder = AlertDialog.Builder(this@MainActivity)
+                builder.run {
+                    setTitle("상품 삭제")
+                    setMessage("상품을 정말로 삭제하시겠습니까?")
+                    setIcon(R.drawable.img_chat)
+                    setPositiveButton("확인") { dialog, _ ->
+                        //확인시 해당 리스트값 제거
+                        setContentView(binding.root)
+                        dialog.dismiss()
+                    }
+                    setNegativeButton("취소") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    show()
+                }
+
+            }
         }
     }
 

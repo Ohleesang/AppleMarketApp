@@ -13,6 +13,7 @@ class ItemAdapter(private val mItems: MutableList<Item>) :
 
     interface ItemClick {
         fun onClick(view: View, position: Int)
+        fun onLongClick(view: View, position: Int)
     }
 
     lateinit var itemClick: ItemClick
@@ -49,9 +50,14 @@ class ItemAdapter(private val mItems: MutableList<Item>) :
         holder.chatItem.text = item.chat.toString()
         holder.likeItem.text = item.like.toString()
 
-        //클릭시 detailActivity로 이동
+        //클릭시 이벤트 처리
         holder.layout.setOnClickListener {
             itemClick.onClick(it, position)
+        }
+        //길게 클릭시 이벤트 처리
+        holder.layout.setOnLongClickListener {
+            itemClick.onLongClick(it,position)
+            true
         }
     }
 }
