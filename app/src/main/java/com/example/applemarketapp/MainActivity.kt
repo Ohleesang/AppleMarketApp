@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
 
-    //알림 채널
+    //알림
     private val notification = Notification(this)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,21 +46,7 @@ class MainActivity : AppCompatActivity() {
         notification.createNotificationChannel()
 
         //벨 클릭시 이벤트 처리
-        val bellView = binding.bellIv
-        bellView.setOnTouchListener { _, event ->
-            when (event.action) {
-                MotionEvent.ACTION_DOWN -> {
-                    bellView.setImageResource(R.drawable.img_notice_bell)
-                }
-
-                MotionEvent.ACTION_UP -> {
-                    bellView.setImageResource(R.drawable.img_notice)
-                    //알람 이벤트 발생!
-                    notification.showNotification()
-                }
-            }
-            true
-        }
+        setOnTouchBell()
 
     }
 
@@ -86,6 +72,23 @@ class MainActivity : AppCompatActivity() {
                 intent.putExtra("clickedItem", data)
                 startActivity(intent)
             }
+        }
+    }
+    private fun setOnTouchBell(){
+        val bellView = binding.bellIv
+        bellView.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    bellView.setImageResource(R.drawable.img_notice_bell)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    bellView.setImageResource(R.drawable.img_notice)
+                    //알람 이벤트 발생!
+                    notification.showNotification()
+                }
+            }
+            true
         }
     }
 }
