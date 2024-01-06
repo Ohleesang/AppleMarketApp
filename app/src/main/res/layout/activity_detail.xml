@@ -149,7 +149,6 @@
         android:id="@+id/detail_bottom_layout"
         android:layout_width="408dp"
         android:layout_height="55dp"
-        android:background="#FBF8F8"
         android:padding="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
