@@ -83,4 +83,9 @@ object ItemList {
         } catch (_: Exception) {
         }
     }
+
+    fun deleteData(position: Int) {
+        value.removeAt(position)
+    }
+
 }
