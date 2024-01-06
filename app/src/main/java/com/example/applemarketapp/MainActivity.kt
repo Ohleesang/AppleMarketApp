@@ -1,6 +1,7 @@
 package com.example.applemarketapp
 
 
+import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -41,6 +42,28 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+
+    //뒤로가기 버튼 눌렀을때,
+    override fun onBackPressed() {
+
+        //다이얼로그 실행
+        val builder = AlertDialog.Builder(this)
+        builder.run{
+            setTitle("종료")
+            setMessage("앱을 종료하시겠습니까?")
+            setIcon(R.drawable.img_chat)
+            setPositiveButton("확인"){dialog,which->
+                dialog.dismiss()
+                super.onBackPressed()
+            }
+            setNegativeButton("취소") { dialog, which ->
+                dialog.dismiss()
+            }
+            show()
+        }
+
+    }
+
     private fun setDummyData(fileName: String) {
         //인스턴스 값 넣기
         ItemList.setDummyData(this, fileName)
@@ -65,7 +88,8 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun setOnTouchBell(){
+
+    private fun setOnTouchBell() {
         val bellView = binding.bellIv
         bellView.setOnTouchListener { _, event ->
             when (event.action) {
