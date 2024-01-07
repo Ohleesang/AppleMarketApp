@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,7 +21,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private lateinit var resultDetailLauncher : ActivityResultLauncher<Intent>
+    private lateinit var resultDetailLauncher: ActivityResultLauncher<Intent>
 
     //알림
     private val notification = Notification(this)
@@ -35,27 +36,28 @@ class MainActivity : AppCompatActivity() {
 
         //결과값 처리
         resultDetailLauncher()
+
     }
 
     //데이터 결과 처리
-    private fun resultDetailLauncher(){
+    private fun resultDetailLauncher() {
         resultDetailLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
                     //데이터 받기
                     val data = result.data
-                    val position = data?.getIntExtra("position",0)
+                    val position = data?.getIntExtra("position", 0)
                     val item = data?.getParcelableExtra<Item>("item")
 
                     //데이터 처리
-                    if(position != null && item != null) ItemList.value[position] = item
+                    if (position != null && item != null) ItemList.value[position] = item
                     createView()
                 }
             }
     }
 
     //뷰를 생성 하는 부분
-    private fun createView(){
+    private fun createView() {
 
         setContentView(binding.root)
 
@@ -77,11 +79,13 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setOnTouchFloating() {
-        val btn = binding.flotingBtnIv
+        val btn = binding.floatingBtnIv
         btn.setOnTouchListener { _, event ->
             when (event.action) {
                 MotionEvent.ACTION_DOWN -> {
                     btn.setImageResource(R.drawable.img_arrow_up_clicked)
+                    //처음 위치로
+                    binding.itemListRv.smoothScrollToPosition(0)
                 }
 
                 MotionEvent.ACTION_UP -> {
@@ -121,9 +125,26 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun setRecyclerView(recyclerView: RecyclerView, mList: MutableList<Item>) {
-        recyclerView.layoutManager = LinearLayoutManager(this)
+        val linearLayoutManager = LinearLayoutManager(this)
+        recyclerView.layoutManager = linearLayoutManager
+
         val adapter = ItemAdapter(mList)
         recyclerView.adapter = adapter
+
+
+        //스크롤 변동될때 생기는 메소드
+        recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
+            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
+                // 스크롤 발생 시 호출되는 메서드
+                // dx: 수평 스크롤의 변화량, dy: 수직 스크롤의 변화량
+                val floatingBtn = binding.floatingBtnIv
+                val isFirstItemVisible =
+                    linearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0
+                if (isFirstItemVisible)
+                    floatingBtn.visibility = View.INVISIBLE
+                else floatingBtn.visibility = View.VISIBLE
+            }
+        })
 
     }
 
@@ -135,7 +156,7 @@ class MainActivity : AppCompatActivity() {
                 //해당 뷰의 데이터를 전달
                 val data = ItemList.value[position]
                 intent.putExtra("clickedItem", data)
-                intent.putExtra("position",position)
+                intent.putExtra("position", position)
                 resultDetailLauncher.launch(intent)
             }
 
