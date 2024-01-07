@@ -28,8 +28,8 @@ class DetailActivity : AppCompatActivity() {
     //데이터를 받아서 화면을 재구성
     private fun setDataView() {
         item =
-            intent.getParcelableExtra<Item>("clickedItem") ?: Item(0,"","","","","",0,0)
-        item?.run {
+            intent.getParcelableExtra<Item>("clickedItem") ?: Item()
+            item.run {
             binding.itemIv.setImageResource(imgResource)
 
             binding.itemNameTv.text = name
@@ -76,7 +76,7 @@ class DetailActivity : AppCompatActivity() {
                 it.tag = onHeartResId
 
                 //2. 좋아요 수 증가
-
+                item.like ++
                 //3. 스낵바 표시
 
             } else if (heartTag == onHeartResId) { // 하트 On
@@ -85,6 +85,7 @@ class DetailActivity : AppCompatActivity() {
                 it.tag = offHeartResId
 
                 //2. 좋아요 수 감소
+                item.like --
             }
 
         }
