@@ -71,7 +71,29 @@ class MainActivity : AppCompatActivity() {
         //벨 클릭시 이벤트 처리
         setOnTouchBell()
 
+        //플로핑 버튼 클릭시 처리
+        setOnTouchFloating()
+
     }
+
+    private fun setOnTouchFloating() {
+        val btn = binding.flotingBtnIv
+        btn.setOnTouchListener { _, event ->
+            when (event.action) {
+                MotionEvent.ACTION_DOWN -> {
+                    btn.setImageResource(R.drawable.img_arrow_up_clicked)
+                }
+
+                MotionEvent.ACTION_UP -> {
+                    btn.setImageResource(R.drawable.img_arrow_up)
+                    //이벤트 발생!
+                }
+            }
+
+            true
+        }
+    }
+
     //뒤로가기 버튼 눌렀을때,
     override fun onBackPressed() {
 
