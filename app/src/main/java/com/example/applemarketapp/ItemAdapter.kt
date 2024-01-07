@@ -27,6 +27,7 @@ class ItemAdapter(private val mItems: MutableList<Item>) :
         val priceItem = binding.priceTv
         val chatItem = binding.chatTv
         val likeItem = binding.likeTv
+        val heartIv = binding.heartIv
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
@@ -49,6 +50,12 @@ class ItemAdapter(private val mItems: MutableList<Item>) :
         holder.priceItem.text = item.price
         holder.chatItem.text = item.chat.toString()
         holder.likeItem.text = item.like.toString()
+        if(item.isCheckedLike) {
+            holder.heartIv.setImageResource(R.drawable.img_all_like)
+        }
+        else{
+            holder.heartIv.setImageResource(R.drawable.img_all_no_like)
+        }
 
         //클릭시 이벤트 처리
         holder.layout.setOnClickListener {

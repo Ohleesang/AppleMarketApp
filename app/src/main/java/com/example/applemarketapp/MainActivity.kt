@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private lateinit var resultDetailLauncher : ActivityResultLauncher<Intent>
+
     //알림
     private val notification = Notification(this)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,10 +43,12 @@ class MainActivity : AppCompatActivity() {
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
                 if (result.resultCode == Activity.RESULT_OK) {
                     //데이터 받기
-                    val position = result.data?.getIntExtra("position",0)
-                    val item = result.data?.getParcelableExtra<Item>("item")
+                    val data = result.data
+                    val position = data?.getIntExtra("position",0)
+                    val item = data?.getParcelableExtra<Item>("item")
+
                     //데이터 처리
-                    ItemList.value[position!!] = item!!
+                    if(position != null && item != null) ItemList.value[position] = item
                     createView()
                 }
             }
