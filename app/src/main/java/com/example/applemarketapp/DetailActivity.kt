@@ -11,6 +11,7 @@ import com.example.applemarketapp.databinding.ActivityMainBinding
 
 class DetailActivity : AppCompatActivity() {
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
+    private lateinit var item :Item
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -26,8 +27,8 @@ class DetailActivity : AppCompatActivity() {
 
     //데이터를 받아서 화면을 재구성
     private fun setDataView() {
-        var item =
-            intent.getParcelableExtra<Item>("clickedItem")
+        item =
+            intent.getParcelableExtra<Item>("clickedItem") ?: Item(0,"","","","","",0,0)
         item?.run {
             binding.itemIv.setImageResource(imgResource)
 
