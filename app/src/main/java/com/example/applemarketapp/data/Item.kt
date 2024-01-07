@@ -15,5 +15,7 @@ data class Item(
     var like: Int,
     var chat: Int,
 ) : Parcelable {
+
+    var isCheckedLike = false
     constructor() : this(0, "", "", "", "", "", 0, 0)
 }
