@@ -14,8 +14,10 @@ data class Item(
     val address: String,
     var like: Int,
     var chat: Int,
+    var isCheckedLike:Boolean = false
 ) : Parcelable {
 
-    var isCheckedLike = false
     constructor() : this(0, "", "", "", "", "", 0, 0)
+
+
 }
