@@ -1,12 +1,15 @@
 package com.example.applemarketapp
 
 
+import android.app.Activity
 import android.app.AlertDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.applemarketapp.data.Item
@@ -17,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private val binding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-
+    private lateinit var resultDetailLauncher : ActivityResultLauncher<Intent>
     //알림
     private val notification = Notification(this)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,8 +32,24 @@ class MainActivity : AppCompatActivity() {
         //뷰를 생성
         createView()
 
+        //결과값 처리
+        resultDetailLauncher()
     }
 
+    //데이터 결과 처리
+    private fun resultDetailLauncher(){
+        resultDetailLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    //데이터 받기
+                    val position = result.data?.getIntExtra("position",0)
+                    val item = result.data?.getParcelableExtra<Item>("item")
+                    //데이터 처리
+                    ItemList.value[position!!] = item!!
+                    createView()
+                }
+            }
+    }
 
     //뷰를 생성 하는 부분
     private fun createView(){
@@ -91,7 +110,8 @@ class MainActivity : AppCompatActivity() {
                 //해당 뷰의 데이터를 전달
                 val data = ItemList.value[position]
                 intent.putExtra("clickedItem", data)
-                startActivity(intent)
+                intent.putExtra("position",position)
+                resultDetailLauncher.launch(intent)
             }
 
             override fun onLongClick(view: View, position: Int) {

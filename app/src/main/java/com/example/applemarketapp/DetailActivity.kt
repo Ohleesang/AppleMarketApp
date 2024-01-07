@@ -1,5 +1,6 @@
 package com.example.applemarketapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
@@ -8,10 +9,12 @@ import android.widget.Toast
 import com.example.applemarketapp.data.Item
 import com.example.applemarketapp.databinding.ActivityDetailBinding
 import com.example.applemarketapp.databinding.ActivityMainBinding
+import com.google.android.material.snackbar.Snackbar
 
 class DetailActivity : AppCompatActivity() {
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
-    private lateinit var item :Item
+    private val position by lazy { intent.getIntExtra("position", 0) }
+    private lateinit var item: Item
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -29,7 +32,7 @@ class DetailActivity : AppCompatActivity() {
     private fun setDataView() {
         item =
             intent.getParcelableExtra<Item>("clickedItem") ?: Item()
-            item.run {
+        item.run {
             binding.itemIv.setImageResource(imgResource)
 
             binding.itemNameTv.text = name
@@ -50,6 +53,10 @@ class DetailActivity : AppCompatActivity() {
     //뒤로가기 버튼 이벤트 설정
     private fun backBtnOnClick() {
         binding.backBtnIv.setOnClickListener {
+            val returnIntent = Intent()
+            returnIntent.putExtra("position",position)
+            returnIntent.putExtra("item",item)
+            setResult(RESULT_OK,returnIntent)
             finish()
         }
 
@@ -76,18 +83,29 @@ class DetailActivity : AppCompatActivity() {
                 it.tag = onHeartResId
 
                 //2. 좋아요 수 증가
-                item.like ++
+                item.like++
                 //3. 스낵바 표시
-
+                showSnackBar("관심 목록에 추가되었습니다.")
             } else if (heartTag == onHeartResId) { // 하트 On
                 //1. img 변경
                 heartIv.setImageResource(offHeartResId)
                 it.tag = offHeartResId
 
                 //2. 좋아요 수 감소
-                item.like --
+                item.like--
             }
 
         }
+    }
+
+    private fun showSnackBar(message: String) {
+        // 스낵바 생성
+        val snackBar = Snackbar.make(
+            binding.root,
+            message,
+            Snackbar.LENGTH_SHORT
+        )
+        // 스낵바 표시
+        snackBar.show()
     }
 }
