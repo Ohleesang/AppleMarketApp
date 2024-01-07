@@ -1,5 +1,6 @@
 package com.example.applemarketapp
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
@@ -52,6 +53,10 @@ class DetailActivity : AppCompatActivity() {
     //뒤로가기 버튼 이벤트 설정
     private fun backBtnOnClick() {
         binding.backBtnIv.setOnClickListener {
+            val returnIntent = Intent()
+            returnIntent.putExtra("position",position)
+            returnIntent.putExtra("item",item)
+            setResult(RESULT_OK,returnIntent)
             finish()
         }
 
