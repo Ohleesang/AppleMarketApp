@@ -5,13 +5,15 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 
-data class Item (
+data class Item(
     val imgResource: Int,
     val name: String,
     val detail: String,
     val seller: String,
     val price: String,
     val address: String,
-    val like: Int,
-    val chat: Int
-):Parcelable
+    var like: Int,
+    var chat: Int,
+) : Parcelable {
+    constructor() : this(0, "", "", "", "", "", 0, 0)
+}
