@@ -91,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                 //해당 뷰의 데이터를 전달
                 val data = ItemList.value[position]
                 intent.putExtra("clickedItem", data)
+                intent.putExtra("position",position)
                 startActivity(intent)
             }
 
