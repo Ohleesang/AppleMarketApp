@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MotionEvent
 import android.view.View
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -28,6 +30,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var resultDetailLauncher: ActivityResultLauncher<Intent>
 
     private var savedPosition: Int = 0
+    private var isScrolledStart = false
 
     //알림
     private val notification = Notification(this)
@@ -56,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         createView()
     }
 
-    //액티비티 가 넘겨가질때 현재 액티비티는 정지상태
+    //액티비티 가 넘겨 가질때 현재 액티비티는 정지상태
     override fun onPause() {
         super.onPause()
 
@@ -120,7 +123,7 @@ class MainActivity : AppCompatActivity() {
         recyclerView.adapter = adapter
 
 
-        // 인터페이스 정의
+        //인터페이스 정의
         //아이템 리스트 클릭시 이벤트 처리
         setItemOnclick(binding.itemListRv.adapter)
 
@@ -130,9 +133,6 @@ class MainActivity : AppCompatActivity() {
 
     //콜백 함수들 정의
     private fun setOnCallBackFunction() {
-
-        //아이템 리스트 클릭시 이벤트 처리
-        setItemOnclick(binding.itemListRv.adapter)
 
         //스크롤 변동시 이벤트 처리
         setRecyclerViewOnScrolled()
@@ -165,7 +165,6 @@ class MainActivity : AppCompatActivity() {
                     floatingBtn.setImageResource(R.drawable.img_arrow_up)
                     //처음 위치로
                     binding.itemListRv.smoothScrollToPosition(0)
-                    binding.floatingBtnIv.visibility = View.INVISIBLE
                 }
             }
 
@@ -231,13 +230,20 @@ class MainActivity : AppCompatActivity() {
                 val floatingBtn = binding.floatingBtnIv
                 val isFirstItemVisible =
                     linearLayoutManager.findFirstCompletelyVisibleItemPosition() == 0
-                if (isFirstItemVisible)
-                    floatingBtn.visibility = View.INVISIBLE
-                else floatingBtn.visibility = View.VISIBLE
-
+                if (isFirstItemVisible){
+//                    floatingBtn.visibility = View.INVISIBLE
+                    applyFadeAnimation(floatingBtn,true)
+                    isScrolledStart = false
+                }
+                  else{
+                      if(!isScrolledStart) {
+                          applyFadeAnimation(floatingBtn,false)
+                          isScrolledStart = true
+                      }
+                }
             }
 
-            //스크롤 상태에 따라 기능실행
+            //스크롤 상태에 따라 기능 실행
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
                 super.onScrollStateChanged(recyclerView, newState)
                 if (newState == RecyclerView.SCROLL_STATE_IDLE) {
@@ -287,6 +293,30 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
+    // 해당 뷰에 애니메이션 처리 isFadeOut = true 이면 페이드아웃 flase이면 페이드인
+    private fun applyFadeAnimation(view: View,isFadeOut:Boolean) {
 
+        val fade : AlphaAnimation = if(isFadeOut) {
+            AlphaAnimation(1.0f,0.0f)
+        } else AlphaAnimation(0.0f,1.0f)
+
+        //fade Out
+        fade.duration = 200 // 페이드 아웃 지속 시간 단위 ms 1000 = 1초
+        fade.setAnimationListener(object : Animation.AnimationListener {
+            override fun onAnimationStart(animation: Animation?) {}
+
+            override fun onAnimationEnd(animation: Animation?) {
+
+                if(isFadeOut) view.visibility = View.INVISIBLE // 페이드 아웃 후 뷰를 숨김
+                else view.visibility = View.VISIBLE
+            }
+
+            override fun onAnimationRepeat(animation: Animation?) {}
+        })
+
+
+        view.startAnimation(fade)
+
+    }
 }
 
