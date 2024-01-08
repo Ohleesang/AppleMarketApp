@@ -38,8 +38,8 @@ class Notification(private val context: Context) {
         //전달되어질 값들 지정
         val builder = NotificationCompat.Builder(context, channelID)
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setContentTitle("애플 마켓!")
-            .setContentText("벨 버튼을 누르셨군요!")
+            .setContentTitle(context.getString(R.string.notification_title))
+            .setContentText(context.getString(R.string.notification_text))
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
 
