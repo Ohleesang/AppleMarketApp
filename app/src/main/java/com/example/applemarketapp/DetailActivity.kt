@@ -80,7 +80,7 @@ class DetailActivity : AppCompatActivity() {
                 //2. 좋아요 수 증가
                 item.like++
                 //3. 스낵바 표시
-                showSnackBar("관심 목록에 추가되었습니다.")
+                showSnackBar(getString(R.string.snack_bar_msg))
             } else { // 하트 On
 
                 //1. img 변경
