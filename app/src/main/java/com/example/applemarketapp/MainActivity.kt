@@ -14,6 +14,7 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.applemarketapp.data.Constants
 import com.example.applemarketapp.data.Item
 import com.example.applemarketapp.data.ItemList
 import com.example.applemarketapp.databinding.ActivityMainBinding
@@ -180,8 +181,8 @@ class MainActivity : AppCompatActivity() {
 
                 //해당 뷰의 데이터를 전달
                 val data = ItemList.value[position]
-                intent.putExtra("clickedItem", data)
-                intent.putExtra("position", position)
+                intent.putExtra(Constants.ITEM_OBJECT, data)
+                intent.putExtra(Constants.ITEM_INDEX, position)
                 resultDetailLauncher.launch(intent)
             }
 
@@ -282,8 +283,8 @@ class MainActivity : AppCompatActivity() {
                 if (result.resultCode == Activity.RESULT_OK) {
                     //데이터 받기
                     val data = result.data
-                    val position = data?.getIntExtra("position", 0)
-                    val item = data?.getParcelableExtra<Item>("item")
+                    val position = data?.getIntExtra(Constants.ITEM_INDEX, 0)
+                    val item = data?.getParcelableExtra<Item>(Constants.ITEM_OBJECT)
 
                     //데이터 처리
                     if (position != null && item != null) ItemList.value[position] = item
