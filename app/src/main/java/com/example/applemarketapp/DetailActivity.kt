@@ -5,13 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.SpannableString
 import android.text.style.UnderlineSpan
+import com.example.applemarketapp.data.Constants
 import com.example.applemarketapp.data.Item
 import com.example.applemarketapp.databinding.ActivityDetailBinding
 import com.google.android.material.snackbar.Snackbar
 
 class DetailActivity : AppCompatActivity() {
     private val binding by lazy { ActivityDetailBinding.inflate(layoutInflater) }
-    private val position by lazy { intent.getIntExtra("position", 0) }
+    private val position by lazy { intent.getIntExtra(Constants.ITEM_INDEX, 0) }
     private lateinit var item: Item
 
     private val onHeartResId = R.drawable.img_all_like
@@ -33,7 +34,7 @@ class DetailActivity : AppCompatActivity() {
     //데이터를 받아서 화면을 재구성
     private fun setDataView() {
         item =
-            intent.getParcelableExtra<Item>("clickedItem") ?: Item()
+            intent.getParcelableExtra<Item>(Constants.ITEM_OBJECT) ?: Item()
         item.run {
             binding.itemIv.setImageResource(imgResource)
 
@@ -60,8 +61,8 @@ class DetailActivity : AppCompatActivity() {
     private fun backBtnOnClick() {
         binding.backBtnIv.setOnClickListener {
             val returnIntent = Intent()
-            returnIntent.putExtra("position", position)
-            returnIntent.putExtra("item", item)
+            returnIntent.putExtra(Constants.ITEM_INDEX, position)
+            returnIntent.putExtra(Constants.ITEM_OBJECT, item)
             setResult(RESULT_OK, returnIntent)
             finish()
         }

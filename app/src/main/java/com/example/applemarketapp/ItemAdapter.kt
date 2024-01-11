@@ -16,7 +16,7 @@ class ItemAdapter(private val mItems: MutableList<Item>) :
         fun onLongClick(view: View, position: Int)
     }
 
-    lateinit var itemClick: ItemClick
+    var itemClick: ItemClick? = null
 
     inner class Holder(binding: ItemRecyclerViewBinding) :
         RecyclerView.ViewHolder(binding.root) {
@@ -59,11 +59,11 @@ class ItemAdapter(private val mItems: MutableList<Item>) :
 
         //클릭시 이벤트 처리
         holder.layout.setOnClickListener {
-            itemClick.onClick(it, position)
+            itemClick?.onClick(it, position)
         }
         //길게 클릭시 이벤트 처리
         holder.layout.setOnLongClickListener {
-            itemClick.onLongClick(it,position)
+            itemClick?.onLongClick(it,position)
             true
         }
     }
