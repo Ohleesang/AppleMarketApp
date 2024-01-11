@@ -1,5 +1,10 @@
 package com.example.applemarketapp.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
+
 data class Item(
     val imgResource: Int,
     val name: String,
@@ -7,8 +12,12 @@ data class Item(
     val seller: String,
     val price: String,
     val address: String,
-) {
-    val like = 0
-    val chat = 0
+    var like: Int,
+    var chat: Int,
+    var isCheckedLike:Boolean = false
+) : Parcelable {
+
+    constructor() : this(0, "", "", "", "", "", 0, 0)
+
 
 }

@@ -4,6 +4,205 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".DetailActivity">
 
+    <ImageView
+        android:id="@+id/back_btn_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_margin="20dp"
+        android:elevation="1dp"
+        android:rotationY="-180"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/img_back_btn" />
+
+
+    <ScrollView
+        android:id="@+id/detail_sv"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="@+id/detail_bottom_layout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/detail_sv_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/item_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="visible"
+                app:srcCompat="@drawable/sample8" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/user_info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="82dp"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/manner_degree_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/manner_degree"
+                    android:textColor="#A8A8A8"
+                    android:textSize="13sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/face_imo_iv"
+                    app:layout_constraintTop_toBottomOf="@+id/face_imo_iv" />
+
+                <ImageView
+                    android:id="@+id/profile_iv"
+                    android:layout_width="52dp"
+                    android:layout_height="46dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/img_user_icon" />
+
+                <TextView
+                    android:id="@+id/seller_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="name"
+                    android:textSize="17dp"
+                    app:layout_constraintStart_toEndOf="@+id/profile_iv"
+                    app:layout_constraintTop_toTopOf="@+id/profile_iv" />
+
+                <TextView
+                    android:id="@+id/manner_degree_value_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/manner_degree_value"
+                    android:textColor="#498C58"
+                    android:textSize="17dp"
+                    android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/address_tv"
+                    app:layout_constraintEnd_toStartOf="@+id/face_imo_iv"
+                    app:layout_constraintTop_toTopOf="@+id/seller_tv" />
+
+                <TextView
+                    android:id="@+id/address_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="address"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="@+id/seller_tv"
+                    app:layout_constraintTop_toBottomOf="@+id/seller_tv" />
+
+                <ImageView
+                    android:id="@+id/face_imo_iv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:scaleType="fitCenter"
+                    app:layout_constraintBottom_toBottomOf="@+id/manner_degree_value_tv"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/seller_tv"
+                    app:srcCompat="@drawable/img_status" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/user_text_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="15dp">
+
+                <TextView
+                    android:id="@+id/item_name_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="name"
+                    android:textSize="30dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/detail_tv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="TextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextViewTextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/item_name_tv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/detail_bottom_layout"
+        android:layout_width="408dp"
+        android:layout_height="55dp"
+        android:background="#FFFFFF"
+        android:elevation="2dp"
+        android:padding="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageView
+            android:id="@+id/heart_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.55"
+            app:srcCompat="@drawable/img_all_no_like" />
+
+        <View
+            android:id="@+id/view"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:background="#9E9E9E"
+            app:layout_constraintStart_toEndOf="@+id/heart_iv"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/price_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="4dp"
+            android:text="price"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/heart_iv"
+            app:layout_constraintStart_toEndOf="@+id/view"
+            app:layout_constraintTop_toTopOf="@+id/heart_iv" />
+
+        <android.widget.Button
+            android:id="@+id/chat_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/btn_style"
+            android:text="@string/button_chat"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

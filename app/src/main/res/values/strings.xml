@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">AppleMarketApp</string>
+    <string name="snack_bar_msg">관심 목록에 추가되었습니다.</string>
+    <string name="upper_bar_address">내배캠동</string>
+    <string name="manner_degree_value">39.3 °C</string>
+    <string name="manner_degree">매너온도</string>
+    <string name="button_chat">채팅하기</string>
+    <string name="notification_title">애플 마켓!</string>
+    <string name="notification_text">벨 버튼을 누르셨군요!</string>
 </resources>
