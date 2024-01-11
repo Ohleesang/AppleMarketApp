@@ -45,8 +45,8 @@ class MainActivity : AppCompatActivity() {
         //알림 채널 생성
         notification.createNotificationChannel()
 
-        //뷰를 생성
-        createView()
+//        //뷰를 생성
+//        createView()
 
         //콜백 함수들 정의
         setOnCallBackFunction()
@@ -201,8 +201,8 @@ class MainActivity : AppCompatActivity() {
                         ItemList.deleteData(position)
 
                         //데이터가 변경되었으면 화면을 다시 구성
-
-                        createView()
+                        binding.itemListRv.adapter?.notifyItemRemoved(position!!)
+//                        createView()
 
                         dialog.dismiss()
                     }
@@ -289,7 +289,7 @@ class MainActivity : AppCompatActivity() {
                     //데이터 처리
                     if (position != null && item != null) ItemList.value[position] = item
 
-
+                    binding.itemListRv.adapter?.notifyItemChanged(position!!)
                 }
             }
     }
